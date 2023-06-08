@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kv109/slack-pr.git"
+    "url": "git+https://github.com/4IP/slack-notif-review.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kv109/slack-pr/issues"
+    "url": "https://github.com/4IP/slack-notif-review/issues"
   },
-  "homepage": "https://github.com/kv109/slack-pr#readme",
+  "homepage": "https://github.com/4IP/slack-notif-review#readme",
   "dependencies": {
     "@actions/core": "^1.2.2",
     "@actions/github": "^2.1.0",
