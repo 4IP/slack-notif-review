@@ -80,5 +80,6 @@ try {
         username: config.username
     });
 } catch (error) {
+    Core.info(error.message);
     Core.setFailed(error.message);
 }
