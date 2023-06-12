@@ -60,13 +60,10 @@ try {
 
     const slack = new Slack(config.hookUrl);
 
-    console.log('payload', payload);
-    Core.info(JSON.stringify(payload));
-
     if (review) {
         if (payload.review.state == "approved") {
             message = fillTemplate(payload, config.pr_approved_format);
-        } else if (payload.review.state == "changes_requested") {
+        } else if (payload.review.state == "changes_requested", "commented") {
             message = fillTemplate(payload, config.pr_rejected_format);
         }
     } else {
