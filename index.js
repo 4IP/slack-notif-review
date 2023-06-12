@@ -63,7 +63,7 @@ try {
     if (review) {
         if (payload.review.state == "approved") {
             message = fillTemplate(payload, config.pr_approved_format);
-        } else if (payload.review.state == "changes_requested", "commented") {
+        } else if (payload.review.state == "changes_requested") {
             message = fillTemplate(payload, config.pr_rejected_format);
         }
     } else {
