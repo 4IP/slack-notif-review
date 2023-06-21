@@ -31,6 +31,8 @@ jobs:
             Title: *{ pull_request.title }*
             Author: { pull_request.user.login }
             URL: { pull_request.html_url }
+          PR_COMMENTED_FORMAT: |
+            *{ pull_request.title }* was commented by { review.user.login } at PR { pull_request.html_url } :write_hand:
           PR_REJECTED_FORMAT: |
             *{ pull_request.title }* was rejected by { review.user.login } :cry:
           SLACK_CHANNEL: testing-ariefjr
