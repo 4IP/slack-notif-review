@@ -71,6 +71,41 @@ jobs:
         USERNAME: Your username
 ```
 
+Or if you want add workflows when reviewer is commented
+
+```yaml
+on:
+  pull_request:
+    types: [ opened, synchronize, ready_for_review ]
+    branches: [ master, develop ]
+  pull_request_review:
+    types: [ submitted ]
+
+jobs:
+  notify:
+    if: ${{ !github.event.pull_request.draft }}
+    name: Slack Notification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: 4IP/slack-notif-review@0.2
+        env:
+          IGNORE_DRAFTS: false # Ignore draft pull requests. Default: true.
+          PR_APPROVED_FORMAT: | # Format is fully customizable.
+            *{ pull_request.title }* was approved by { review.user.login } at PR { pull_request.html_url } :white_check_mark:
+          PR_READY_FOR_REVIEW_FORMAT: |
+            <!here> please review, Jamtangancom-web PR!!! :rocket: :sungkem:
+            Title: *{ pull_request.title }*
+            Author: { pull_request.user.login }
+            URL: { pull_request.html_url }
+          PR_COMMENTED_FORMAT: |
+            *{ pull_request.title }* was commented by { review.user.login } at PR { pull_request.html_url } :writing_hand:
+          PR_REJECTED_FORMAT: |
+            *{ pull_request.title }* was rejected by { review.user.login } :cry:
+          SLACK_CHANNEL: your-slack-channel
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          USERNAME: Your username
+```
+
 ## Formatting
 Any string inside brackets is replaced with a value taken from an actual event payload.
 All available values can be found [here](https://developer.github.com/v3/activity/events/types/#webhook-event-name-34) and [here](https://developer.github.com/v3/activity/events/types/#webhook-event-name-35).
