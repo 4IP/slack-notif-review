@@ -63,7 +63,7 @@ try {
     const slack = new Slack(config.hookUrl);
 
     if (review) {
-        if (payload.review.state == ["approved", "commented"]) {
+        if (payload.review.state == "approved") {
             message = fillTemplate(payload, config.pr_approved_format);
         } else if (payload.review.state == "commented") {
             message = fillTemplate(payload, config.pr_commented_format);
